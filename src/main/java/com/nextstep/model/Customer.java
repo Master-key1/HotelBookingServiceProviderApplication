@@ -1,25 +1,33 @@
 package com.nextstep.model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Customer_details")
 public class Customer {
+	@Id
 	private String custId;
 	private String custName;
 	private String custAdharNo;
 	private String custLoc;
-	 @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate CustBdate;
+	private String custPhoneNo;
+	private byte age;
 
+	@PrePersist
+	public void generateId() {
+		this.custId = UUID.randomUUID().toString(); // Auto generate String ID
+	}
 
-		public LocalDate getCustBdate() {
-			return CustBdate;
-		}
-
-		public void setCustBdate(LocalDate custBdate) {
-			CustBdate = custBdate;
-		}
 	public String getCustId() {
 		return custId;
 	}
@@ -52,11 +60,34 @@ public class Customer {
 		this.custLoc = custLoc;
 	}
 
+	public LocalDate getCustBdate() {
+		return CustBdate;
+	}
+
+	public void setCustBdate(LocalDate custBdate) {
+		CustBdate = custBdate;
+	}
+
+	public String getCustPhoneNo() {
+		return custPhoneNo;
+	}
+
+	public void setCustPhoneNo(String custPhoneNo) {
+		this.custPhoneNo = custPhoneNo;
+	}
+
+	public byte getAge() {
+		return age;
+	}
+
+	public void setAge(byte age) {
+		this.age = age;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [custId=" + custId + ", custName=" + custName + ", custAdharNo=" + custAdharNo + ", custLoc="
-				+ custLoc + ", CustBdate=" + CustBdate + "]";
+				+ custLoc + ", CustBdate=" + CustBdate + ", custPhoneNo=" + custPhoneNo + ", age=" + age + "]";
 	}
-
 
 }
