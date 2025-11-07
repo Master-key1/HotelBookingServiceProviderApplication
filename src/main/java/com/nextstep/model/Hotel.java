@@ -1,5 +1,6 @@
 package com.nextstep.model;
 
+import java.util.Random;
 import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
@@ -20,10 +21,7 @@ public class Hotel {
 
 	
 
-	@PrePersist
-	public void generateId() {
-		this.hotelId = UUID.randomUUID().toString(); // Auto generate String ID
-	}
+	
 
 	public String getHotelId() {
 		return hotelId;

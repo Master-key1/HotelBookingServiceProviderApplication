@@ -1,6 +1,7 @@
 package com.nextstep.model;
 
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -25,7 +26,9 @@ public class Customer {
 
 	@PrePersist
 	public void generateId() {
-		this.custId = UUID.randomUUID().toString(); // Auto generate String ID
+		
+		Random randam = new Random();
+		this.custId = randam.ints(1000, 100000).toString();
 	}
 
 	public String getCustId() {
