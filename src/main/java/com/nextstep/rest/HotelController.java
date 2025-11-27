@@ -18,6 +18,8 @@ import jakarta.persistence.PrePersist;
 
 @RestController
 @RequestMapping("/hotel")
+@CrossOrigin(origins = "*")
+
 public class HotelController {
 
 	@Autowired
@@ -73,7 +75,6 @@ public class HotelController {
 	}
 
 	@GetMapping("/{hotelid}")
-	@CrossOrigin(origins = "*")
 
 	public Hotel getHotel(@PathVariable String hotelid) {
 		return Hotelservice.getHotelById(hotelid);

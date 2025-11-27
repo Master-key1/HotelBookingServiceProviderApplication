@@ -9,6 +9,7 @@ public class HotelBookingServiceProviderApplication {
 
 	public static void main(String[] args) {
 		 ConfigurableApplicationContext context  =SpringApplication.run(HotelBookingServiceProviderApplication.class, args);
+	
 	}
 
 }
